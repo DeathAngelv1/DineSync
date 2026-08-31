@@ -1,0 +1,228 @@
+/* ==========================================================================
+   DINESYNC Modern Futuristic Luxury Restaurant UI Stylesheet
+   ========================================================================== */
+
+:root {
+  --bg-main: #0B0F17;
+  --bg-card: #131B2A;
+  --bg-card-hover: #1A2438;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --accent-emerald: #10B981;
+  --accent-cyan: #06B6D4;
+  --accent-rose: #F43F5E;
+  --accent-amber: #F59E0B;
+  --accent-purple: #8B5CF6;
+  --accent-blue: #3B82F6;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: #E2E8F0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphic Cards */
+.glass-panel {
+  background: rgba(19, 27, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(26, 36, 56, 0.7) 0%, rgba(19, 27, 42, 0.9) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 0.875rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+}
+
+/* Glow status indicators */
+.glow-emerald {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+.glow-rose {
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+}
+
+.glow-amber {
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+}
+
+.glow-purple {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+}
+
+/* Pulse animation */
+@keyframes sensor-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-sensor-pulse {
+  animation: sensor-pulse 2s infinite ease-in-out;
+}
+
+/* Radial Gauge Styling */
+.radial-progress {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.radial-progress-bg {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.radial-progress-val {
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 0.8s ease-out, stroke 0.4s ease;
+}
+
+/* Interactive Floor Plan Map */
+.floorplan-container {
+  background: radial-gradient(circle at 50% 50%, #151F32 0%, #0D131F 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.floor-grid-bg {
+  background-size: 30px 30px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Floor Plan Table Markers */
+.floor-table {
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.floor-table:hover {
+  transform: scale(1.08);
+  z-index: 30;
+}
+
+.table-shape-rect {
+  border-radius: 0.75rem;
+}
+
+.table-shape-circle {
+  border-radius: 50%;
+}
+
+.table-shape-booth {
+  border-radius: 1.25rem 1.25rem 0.5rem 0.5rem;
+}
+
+/* Status colors */
+.status-available {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.35) 100%);
+  border: 2px solid #10B981;
+  color: #A7F3D0;
+}
+
+.status-occupied {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.25) 0%, rgba(225, 29, 72, 0.45) 100%);
+  border: 2px solid #F43F5E;
+  color: #FECDD3;
+}
+
+.status-reserved {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.35) 100%);
+  border: 2px solid #F59E0B;
+  color: #FDE68A;
+}
+
+.status-cleaning {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.35) 100%);
+  border: 2px solid #8B5CF6;
+  color: #DDD6FE;
+}
+
+/* Heatmap Grid */
+.heatmap-cell {
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.15);
+  z-index: 20;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Toast styling */
+#toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Digital Ticket Glow */
+.ticket-glow {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.15);
+}
